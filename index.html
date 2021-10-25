@@ -1,0 +1,166 @@
+<html>
+
+<head>
+    <title>1+1=2</title>
+</head>
+
+<body>
+    <h1>
+        <strong>
+            <button onclick="add1()">
+                1
+            </button>
+            <button onclick="add2()">
+                2
+            </button>
+            <button onclick="add3()">
+                3
+            </button>
+            <button onclick="add4()">
+                4
+            </button>
+            <button onclick="add5()">
+                5
+            </button>
+            <button onclick="add6()">
+                6
+            </button>
+            <button onclick="add7()">
+                7
+            </button>
+            <button onclick="add8()">
+                8
+            </button>
+            <button onclick="add9()">
+                9
+            </button>
+            <button onclick="add0()">
+                0
+            </button>
+            <br />
+            <button onclick="addAdd()">
+                +
+            </button>
+            <button onclick="addSub()">
+                -
+            </button>
+            <button onclick="addDiv()">
+                /
+            </button>
+            <button onclick="addMul()">
+                *
+            </button>
+            <button onclick="addEuq()">
+                =
+            </button>
+            <br/>
+            <label id="currentInput">
+                ?
+            </label>
+            =
+            <label id="answerId">
+                ?
+            </label>
+        </strong>
+    </h1>
+</body>
+
+</html>
+<script>
+    var currentNumber = null;
+    var number1 = null;
+    var operator;
+    var answer;
+
+    
+
+    function addNumber(number) {
+
+        if (currentNumber === null) {
+            currentNumber = number
+        } else {
+            currentNumber = currentNumber + number
+        }
+        updateHtmlLabel()
+        if (answer != null) {
+            document.getElementById("answerId").innerText = "?"
+        }
+    }
+    function getCalculating() {
+        if (number1 === null)
+        {
+        return currentNumber
+        } else {
+            if (currentNumber === null) {
+                return number1 + operator
+            } else {
+                return number1 + operator + currentNumber
+            }
+        }
+    }
+    function updateHtmlLabel() {
+        var calculating = getCalculating()
+        console.log(calculating)
+        console.log(currentNumber)
+        setCurrentInput(calculating)
+    }
+    function setCurrentInput(value) {
+        document.getElementById("currentInput").innerText = value
+    }
+    function add1() {
+        addNumber("1")
+    }
+    function add2() {
+        addNumber("2")
+    }
+    function add3() {
+        addNumber("3")
+    }
+    function add4() {
+        addNumber("4")
+    }
+    function add5() {
+        addNumber("5")
+    }
+    function add6() {
+        addNumber("6")
+    }
+    function add7() {
+        addNumber("7")
+    }
+    function add8() {
+        addNumber("8")
+    }
+    function add9() {
+        addNumber("9")
+    }
+    function add0() {
+        addNumber("0")
+    }
+    function addOperator(opop) {
+        number1 = currentNumber
+        currentNumber = null
+        operator = opop
+        updateHtmlLabel()
+    
+    }
+    function addAdd() {
+        addOperator("+")
+    }
+    function addSub() {
+        addOperator("-")
+    }
+    function addMul() {
+        addOperator("*")
+    }
+    function addDiv() {
+        addOperator("/")
+    }
+    function addEuq() {
+        answer = eval(Number(number1) + operator + Number(currentNumber))
+        document.getElementById("answerId").innerText = answer
+        currentNumber = null
+        number1 = null
+    }
+
+</script>
